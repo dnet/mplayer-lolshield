@@ -1,0 +1,22 @@
+--- orig/Charliplexing.cpp	2010-05-28 08:57:15.000000000 +0200
++++ Charliplexing.cpp	2010-12-28 01:58:41.838617760 +0100
+@@ -224,6 +224,9 @@
+         Set(x,y,set);
+ }
+ 
++uint8_t* LedSign::GetBuffer() {
++    return workBuffer;
++}
+ 
+ /* -----------------------------------------------------------------  */
+ /** Set : switch on and off the leds. All the position 
+--- orig/Charliplexing.h	2010-05-28 08:57:15.000000000 +0200
++++ Charliplexing.h	2010-12-28 01:59:03.086617759 +0100
+@@ -23,6 +23,7 @@
+     extern void Clear(int set=0);
+     extern void Horizontal(int y, int set=0);
+     extern void Vertical(int x, int set=0);
++    extern uint8_t* GetBuffer();
+ };
+ 
+ #endif
