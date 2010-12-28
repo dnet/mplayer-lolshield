@@ -80,7 +80,7 @@ for i in range(numframes):
 		print 'invalid image: must be binary PPM'
 		continue
 	if f.readline() != '%d %d\n' % (width, height):
-		print 'invalid image: resolution must be 14 x 9'
+		print 'invalid image: resolution must be %d x %d' % (width, height)
 		continue
 	maxval = int(f.readline())
 	img = f.read()
