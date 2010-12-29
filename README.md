@@ -19,3 +19,9 @@ License
 -------
 
 The source code is released under MIT license.
+
+TODO
+----
+
+ - compression (delta frames)
+ - grayscale support
