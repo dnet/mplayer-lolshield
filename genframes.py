@@ -31,7 +31,7 @@ import sys
 try:
 	width, height, pixels, numframes = tuple(map(int, sys.argv[1:5]))
 except:
-	print 'Usage: genframes.py <width> <height> <number of frames>'
+	print 'Usage: genframes.py <width> <height> <pixels> <number of frames>'
 	sys.exit(1)
 
 # Table for LED Position in leds[] ram table (from Charlieplexing.cpp)
