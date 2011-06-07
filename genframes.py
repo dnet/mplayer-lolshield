@@ -29,10 +29,7 @@
 import sys
 
 try:
-	width = int(sys.argv[1])
-	height = int(sys.argv[2])
-	pixels = int(sys.argv[3])
-	numframes = int(sys.argv[4])
+	width, height, pixels, numframes = tuple(map(int, sys.argv[1:5]))
 except:
 	print 'Usage: genframes.py <width> <height> <number of frames>'
 	sys.exit(1)
@@ -54,11 +51,11 @@ def _BV(bit):
 	return 1 << bit
 
 def img2buf(img, maxval):
-	buf = [0 for i in range(pixels)]
+	buf = [0] * pixels
 	treshold = maxval / 2
 	pixel = 0
-	for y in range(height):
-		for x in range(width): # based on Charlieplexing.cpp
+	for y in xrange(height):
+		for x in xrange(width): # based on Charlieplexing.cpp
 			pin_low  = ledMap[x * 2 + y * 28 + 1]
 			pin_high = ledMap[x * 2 + y * 28 + 0]
 			r = ord(img[pixel])
@@ -73,7 +70,7 @@ def img2buf(img, maxval):
 				buf[(pin_low - 2) * 2 + (pin_high / 8)] &= ~_BV(pin_high & 0x07)
 	return ', '.join(map(str, buf))
 
-for i in range(numframes):
+for i in xrange(numframes):
 	fn = '%08d.ppm' % (i + 1)
 	f = open(fn, 'r')
 	if f.readline() != 'P6\n':
